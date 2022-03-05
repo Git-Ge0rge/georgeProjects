@@ -1,0 +1,33 @@
+<%- include('../partials/header') %>
+
+<%# change method after setting up edit to use this page instead for both new and edit functions%>
+ 
+<form id="new-form" action="/posts" method="POST">
+  <label>Title: 
+    <input type="text" name="title" placeholder="Give your post a title..."> 
+  </label>
+  <label>Topics Covered   
+    <select name="topics">
+      <option value="JavaScript">JavaScript</option>
+      <option value="Python">Python</option>
+      <option value="CSS">CSS</option>
+      <option value="HTML">HTML</option>
+      <option value="Front End Development">Front End Development</option>
+      <option value="Back End Development">Back End Development</option>
+      <option value="NodeJS">NodeJS</option>
+      <option value="OAuth">OAuth</option>
+    </select>
+  </label>
+  <label>Post as Private?
+    <input type="checkbox" name="private">
+  </label>
+  <label>
+    <textarea id="tiny" type="text" name="main" placeholder="Enter Text Here"></textarea>
+  </label>
+  <input type="submit" value="Publish">
+</form>
+
+<%- include('../partials/footer') %>
+
+
+

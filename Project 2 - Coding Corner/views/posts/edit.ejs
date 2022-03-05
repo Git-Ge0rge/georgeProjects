@@ -1,0 +1,40 @@
+<%- include('../partials/header') %>
+
+<!-- figutr out how to call value into TinyMCE -->
+<script>
+  tinymce.get('textarea#tiny').setContent('<p>This is my new content!</p>');
+</script>
+
+<% if (user.id == post.author) { %>
+  <form id="new-form" action="/posts/<%= post.id %>?_method=PUT" method="POST">
+    <label>Title: 
+      <input type="text" name="title" value="<%= post.title %>"> 
+    </label>
+    <label>Topics Covered   
+      <select name="topics">
+        <option value="JavaScript">JavaScript</option>
+        <option value="Python">Python</option>
+        <option value="CSS">CSS</option>
+        <option value="HTML">HTML</option>
+        <option value="Front End Development">Front End Development</option>
+        <option value="Back End Development">Back End Development</option>
+        <option value="NodeJS">NodeJS</option>
+        <option value="OAuth">OAuth</option>
+      </select>
+    </label>
+    <label>Post as Private?
+      <input type="checkbox" name="private">
+    </label>
+    <label>
+      <textarea id="tiny" type="text" name="main"></textarea>
+    </label>
+      <input type="submit" value="Publish Edit">
+  </form>
+<% } else { %>
+  <h1>You're not allowed here! </h1>
+  <br>
+  <button><a href="/posts/all">Back to Safety</a></button>
+  <% } %>
+
+<%- include('../partials/footer') %>
+

@@ -1,0 +1,63 @@
+<%- include('../partials/header') %>
+
+<section id="show-page">
+  <h1><%= post.title %></h1>
+  <br>
+  <div>Topics Covered: <%= post.topics %></div>
+  <br>
+  <div><%- post.main %></div>
+  <br>
+  
+  <% if (user.id == post.author) { %>
+    <button><a href="/posts/<%=post.id%>/edit">EDIT POST</a></button>
+  <td>
+    <form method="POST" action="/posts/<%=post._id%>?_method=DELETE">
+      <button id=<%=post.id%> name="_method" type="submit" class="btn white-text">DELETE POST</button>
+    </form>
+  </td>
+  <% } else { %>
+<% } %>
+</section>
+
+<h2>Comments (<%= post.comments.length %>)</h2>
+<form id="add-comment-form" method="POST"
+  action="/posts/<%= post._id %>/comments">
+  <textarea id=tiny name="comment"></textarea>
+  <input type="submit" value="Add Comment">
+</form>
+
+<% if (post.comments.length) { %>
+      <% post.comments.forEach(function(c) { %>
+        <ul>
+          <li><%- c.comment %></li>
+        </ul> 
+      <% }); %>
+<% } else { %>
+  <h5>No Comments Yet</h5>
+<% } %>
+
+<!-- <%# if (comment.length) { %>
+  <section id="show-page">
+    <div><%#= post.title %></div>
+    <div>Topics Covered: <%#= post.topics %></div>
+    <div><%#= post.main %></div>
+  </section>
+<%# } else { %>
+  <h5>No Post with ID: <%#= post._id %> found.</h5>
+<%# } %>
+-->
+
+<!-- <script>
+ 
+
+  document.getElementById('editBtn').addEventListener('click', () => {
+    console.log("button clicked")
+    const newTextAreaElement = document.createElement('textarea', {'id' : 'tiny', 'value' : 'post.main'}) // create text area element 
+    // <textarea name="commentToUpdate" value="<%#=post.main%>">
+    newTextAreaElement.value = post.main
+    document.getElementsByTagName('form')[0].appendChild(newTextAreaElement)
+  })
+</script> -->
+
+
+<%- include('../partials/footer') %>

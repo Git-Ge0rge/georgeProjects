@@ -1,0 +1,46 @@
+<%- include('../partials/header') %>
+
+
+<% if (typeof user !== 'undefined') { %>
+    <h4>Hi <%= user['name'].split(" ")[0] %>! </h4>
+    <br>
+    <img src=<%= user['avatar']%>> 
+    <br>
+
+    <%# had to use the square brackets to access because dot property not working on here for some reason= %>
+    <!-- <h2>Account Info:</h2> %> -->
+    <!-- <p><%#= user %></p> -->
+
+    <!-- <h2> profileId: <%#= user['_id'] %></h2>  -->
+    
+    <table id="list">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Topics Covered</th>
+          <th>Private?</th>
+        </tr>
+      </thead>
+      <tbody>
+            <% myPosts.forEach(p => { %>
+              <tr>
+                <td><%= p.title %></td>
+                <td><%= p.topics %></td>
+                <td><%= p.private %></td>
+                <td><a href="/posts/<%= p._id %>">DETAILS</a></td>
+                <!-- <td>
+                  <form action="/posts/<%#=p._id%>?_method=DELETE" method="POST">
+                    <button id=<%#=p._id%> type="submit" class="btn white-text">DELETE</button>
+                  </form>
+                </td> -->
+              </tr>
+            <% }); %>
+        </tbody>
+      </table>
+
+  <% } else { %>
+    <p> PLEASE LOG IN TO VIEW YOUR POSTS</p>
+<% } %>
+
+<%- include('../partials/footer') %>
+

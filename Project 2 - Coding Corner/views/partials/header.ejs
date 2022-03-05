@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <title><%= title %></title>
+  
+  <script src="https://cdn.tiny.cloud/1/gozch6yxm14hk1t05cgpo093ktz36dmptib6rhja0izun4gb/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+</head>
+<body>
+  <nav>
+    <a href="/posts/new" <%- title === 'New Post' ? 'class="active"' : '' %>> NEW POST </a><br>
+    <a href="/posts/all" <%- title === 'My Posts' ? 'class="active"' : '' %>> ALL POSTS </a><br>
+    <a href="/posts/favourites" <%- title === 'Favourites' ? 'class="active"' : '' %>> FAVOURITES </a><br>
+    <a href="/posts/" <%- title === 'My Posts' ? 'class="active"' : '' %>> MY POSTS </a><br>
+    <%# Add login UI here %>
+    <ul class="right">
+      <li>
+        <% if (user) { %>
+          <a href="/logout"><i class="material-icons left"><%#trending_flat%></i>Log Out</a>
+        <% } else { %>
+          <a href="/auth/google"><i class="material-icons left"><%#vpn_key%></i>Login with Google</a>
+        <% } %>
+      </li>
+    </ul>
+    <%# enabling TinyMCE Textbox Plugin %>
+    <script> 
+      console.log('TINYMCE Init from header')
+      tinymce.init({
+        selector: 'textarea#tiny'
+      });
+    </script>
+    
+  </nav>
+  <main>
+    <h1><%= title %></h1>
