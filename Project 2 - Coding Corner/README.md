@@ -24,6 +24,10 @@ A class forum where you can login with Google and create useful posts to discuss
 ![Main Page ScreenShot](https://i.imgur.com/OppCwEZ.png)
 ![Post Example](https://i.imgur.com/W4aTkLC.png)
 
+## ERD
+
+![ERD Diagram](https://i.imgur.com/L9Pkval.png)
+
 ## Routing
 
 #### Posts
@@ -33,7 +37,7 @@ A class forum where you can login with Google and create useful posts to discuss
 | GET            | /posts              | postsCtrl.index         | View all the posts submitted by the logged in user                                           |
 | GET            | /posts/all          | postsCtrl.allposts      | View all the posts regardless of who submitted (use querystring params to perform filtering) |
 | GET            | /posts/:id          | postsCtrl.show          | View the details of any post                                                                 |
-| GET            | /posts/new          | postsCtrl.newPost       | View a form for submitting a post (be sure to define this route before the show route)       |
+| GET            | /posts/new          | postsCtrl.newPost       | View a form for submitting a post (be sure to define this route before the show)route)       |
 | POST           | /posts              | postsCtrl.create        | Handle the new post form being submitted                                                     |
 | POST           | /posts/:id          | postsCtrl.createComment | Add a comment to the current topic thread                                                    |
 | GET            | /posts/:id/edit     | postsCtrl.edit          | View a form for editing a post (restrict to user who submitted the post)                     |
@@ -46,3 +50,4 @@ A class forum where you can login with Google and create useful posts to discuss
 - Username and account privileges
 - Favourited Posts abilities
 - Edit comment functionality
+- CSS theme with Bootstrap / Tailwind CSS
