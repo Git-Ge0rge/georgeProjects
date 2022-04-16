@@ -1,0 +1,54 @@
+{%load static%} 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+
+    <title>Wacky Widgets</title>
+</head>
+<body>
+    <h1> Wacky Widgets </h1>
+{% if Widget_list|length == 0 %}
+<h3> No Widgets Exist </h3>
+{% else %}
+<table class="pure-table pure-table-striped">
+    <tr>
+        <th>Description</th>
+        <th>Quantity</th>
+        <th>Delete</th>
+    </tr>  
+    {% for widget in Widget_list %}
+    <tr>
+        <td>{{widget.description}}</td>
+        <td>{{widget.quantity}}</td>
+        <td><a  href='{{widget.id}}/delete'>X</a></td>
+        <!-- <td>  <a class="pure-button" href=" url 'widget_delete' Widget_list.id "><button>X</button></a></td> -->
+
+    </tr> 
+    {% endfor %}
+    <tr>
+        <td class='bold'>Total Quantity</td>
+        <td>{{sum}}</td>
+        <td></td>
+    </tr> 
+</table>
+{% endif %}
+
+<hr> 
+<h4>Add Widget</h4>
+<form class="pure-form" action="" method="post">
+    <!-- Django requires the following for security purposes -->
+    {% csrf_token %}
+    <table>
+    <!-- Render the inputs inside of <tr>s & <td>s -->
+    {{ form.as_table }}
+    </table>
+    <input class="pure-button" type="submit" value="Submit!" >
+</form>
+</body>
+</html>
